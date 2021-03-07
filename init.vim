@@ -129,7 +129,7 @@ let g:terminal_color_14 = '#9AEDFE'
 " ===
 " Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
-noremap ; :
+"noremap ; :
 
 " Save & quit
 noremap Q :q<CR>
@@ -141,11 +141,11 @@ noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 noremap <LEADER>rv :e .nvimrc<CR>
 
 " Undo operations
-noremap l u
+"noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+"noremap k i
+"noremap K I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -167,7 +167,8 @@ noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
 nnoremap <LEADER>tt :%s/    /\t/g
 vnoremap <LEADER>tt :s/    /\t/g
 
-" Folding
+" Folding 
+" TODO ?
 noremap <silent> <LEADER>o za
 
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
@@ -178,37 +179,37 @@ noremap <silent> <LEADER>o za
 " ===
 " New cursor movement (the default arrow keys are used for resizing windows)
 "     ^
-"     u
-" < n   i >
-"     e
+"     k 
+" < h   l >
+"     j
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
-noremap <silent> gu gk
-noremap <silent> ge gj
+"noremap <silent> u k
+"noremap <silent> n h
+"noremap <silent> e j
+"noremap <silent> i l
+"noremap <silent> gu gk
+"noremap <silent> ge gj
 noremap <silent> \v v$h
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+noremap <silent> K 5k
+noremap <silent> J 5j
 
 " N key: go to the start of the line
-noremap <silent> N 0
+noremap <silent> H 0
 " I key: go to the end of the line
-noremap <silent> I $
+noremap <silent> L $
 
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+"noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
-noremap <C-E> 5<C-e>
+"noremap <C-U> 5<C-y>
+"noremap <C-E> 5<C-e>
 
 
 source $XDG_CONFIG_HOME/nvim/cursor.vim
@@ -222,14 +223,14 @@ inoremap <C-a> <ESC>A
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-w> <S-Right>
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-p> <Up>
+"cnoremap <C-n> <Down>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f> <Right>
+"cnoremap <M-b> <S-Left>
+"cnoremap <M-w> <S-Right>
 
 
 " ===
@@ -244,20 +245,20 @@ noremap = n
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
+noremap <LEADER>k <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>h <C-w>h
+noremap <LEADER>l <C-w>l
 noremap qf <C-w>o
 
 " Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sj :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <up> :res +5<CR>
@@ -283,12 +284,12 @@ noremap <LEADER>q <C-w>j:q<CR>
 " ===
 " Create a new tab with tu
 noremap tu :tabe<CR>
-" Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
-" Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+" Move around tabs with tj and tk
+noremap tj :-tabnext<CR>
+noremap tk :+tabnext<CR>
+" Move the tabs with tmj and tmk
+noremap tmj :-tabmove<CR>
+noremap tmk :+tabmove<CR>
 
 
 " ===
@@ -316,7 +317,7 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
-noremap ` ~
+"noremap ` ~
 
 noremap <C-c> zz
 
@@ -324,13 +325,13 @@ noremap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet 
+"noremap tx :r !figlet 
 
 " find and replace
-noremap \s :%s//g<left><left>
+"noremap \s :%s//g<left><left>
 
 " set wrap
-noremap <LEADER>sw :set wrap<CR>
+"noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
 function! SynGroup()
@@ -352,33 +353,33 @@ func! CompileRunGcc()
 		:sp
 		:res -15
 		:term ./%<
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
+	" elseif &filetype == 'java'
+	" 	exec "!javac %"
+	" 	exec "!time java %<"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
 		set splitbelow
 		:sp
 		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-		silent! exec "CocCommand flutter.dev.openDevLog"
-	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
+	" elseif &filetype == 'html'
+	" 	silent! exec "!".g:mkdp_browser." % &"
+	" elseif &filetype == 'markdown'
+	" 	exec "InstantMarkdownPreview"
+	" elseif &filetype == 'tex'
+	" 	silent! exec "VimtexStop"
+	" 	silent! exec "VimtexCompile"
+	" elseif &filetype == 'dart'
+	" 	exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+	" 	silent! exec "CocCommand flutter.dev.openDevLog"
+	" elseif &filetype == 'javascript'
+	" 	set splitbelow
+	" 	:sp
+	" 	:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	" elseif &filetype == 'go'
+	" 	set splitbelow
+	" 	:sp
+	" 	:term go run .
 	endif
 endfunc
 
@@ -394,20 +395,21 @@ call plug#begin('~/.config/nvim/plugged')
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground'
+" Treesitter for highlight code TODO
+"Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
+"Plug 'theniceboy/nvim-deus' TODO
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
-Plug 'theniceboy/eleline.vim'
+"Plug 'theniceboy/eleline.vim' TODO
+Plug 'vim-airline/vim-airline'
 Plug 'ojroques/vim-scrollstatus'
 
 " General Highlighter
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
+"Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'RRethy/vim-illuminate'
 
 " File navigation
@@ -432,13 +434,13 @@ Plug 'wellle/tmux-complete.vim'
 
 " Snippets
 " Plug 'SirVer/ultisnips'
-Plug 'theniceboy/vim-snippets'
+"Plug 'theniceboy/vim-snippets'
 
 " Undo Tree
 Plug 'mbbill/undotree'
 
 " Git
-Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+"Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
@@ -453,45 +455,45 @@ Plug 'google/vim-codefmt'
 " Plug 'lervag/vimtex'
 
 " CSharp
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
+"Plug 'OmniSharp/omnisharp-vim'
+"Plug 'ctrlpvim/ctrlp.vim' , { 'for': ['cs', 'vim-plug'] } " omnisharp-vim dependency
 
 " HTML, CSS, JavaScript, Typescript, PHP, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'neoclide/jsonc.vim'
-Plug 'othree/html5.vim'
-Plug 'alvan/vim-closetag'
+"Plug 'elzr/vim-json'
+"Plug 'neoclide/jsonc.vim'
+"Plug 'othree/html5.vim'
+"Plug 'alvan/vim-closetag'
 " Plug 'hail2u/vim-css3-syntax' " , { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
 " Plug 'pangloss/vim-javascript', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+"Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'posva/vim-vue'
 " Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'leafOfTree/vim-svelte-plugin'
 " Plug 'leafgarland/typescript-vim'
 
 " Go
-Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
+"Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
 
 " Python
 " Plug 'tmhedberg/SimpylFold', { 'for' :['python', 'vim-plug'] }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] } highlight for python TODO
 "Plug 'vim-scripts/indentpython.vim', { 'for' :['python', 'vim-plug'] }
 "Plug 'plytophogy/vim-virtualenv', { 'for' :['python', 'vim-plug'] }
-Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] }
+"Plug 'tweekmonster/braceless.vim', { 'for' :['python', 'vim-plug'] } for indent TODO
 
 " Flutter
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
+"Plug 'dart-lang/dart-vim-plugin'
+"Plug 'f-person/pubspec-assist-nvim', { 'for' : ['pubspec.yaml'] }
 
 " Swift
-Plug 'keith/swift.vim'
-Plug 'arzg/vim-swift'
+"Plug 'keith/swift.vim'
+"Plug 'arzg/vim-swift'
 
 " Markdown
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -505,26 +507,26 @@ Plug 'dkarter/bullets.vim'
 " Editor Enhancement
 "Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mg979/vim-visual-multi'
-Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
-Plug 'theniceboy/antovim' " gs to switch
+"Plug 'mg979/vim-visual-multi'  multi cursor not use
+" Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
+"Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
-Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
+"Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 " Plug 'Konfekt/FastFold'
 "Plug 'junegunn/vim-peekaboo'
 "Plug 'wellle/context.vim'
-Plug 'svermeulen/vim-subversive'
-Plug 'theniceboy/argtextobj.vim'
-Plug 'rhysd/clever-f.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'theniceboy/pair-maker.vim'
-Plug 'theniceboy/vim-move'
+"Plug 'svermeulen/vim-subversive'
+" Plug 'theniceboy/argtextobj.vim'
+" Plug 'rhysd/clever-f.vim'
+" Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'theniceboy/pair-maker.vim'
+" Plug 'theniceboy/vim-move'
 " Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 " For general writing
 " Plug 'junegunn/goyo.vim'
@@ -535,7 +537,7 @@ Plug 'Yggdroot/indentLine'
 " Plug 'MattesGroeger/vim-bookmarks'
 
 " Find & Replace
-Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
+" Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }  TODO
 
 " Documentation
 "Plug 'KabbAmine/zeavim.vim' " <LEADER>z to find doc
@@ -543,20 +545,20 @@ Plug 'brooth/far.vim', { 'on': ['F', 'Far', 'Fardo'] }
 " Mini Vim-APP
 "Plug 'jceb/vim-orgmode'
 "Plug 'mhinz/vim-startify'
-Plug 'skywind3000/asynctasks.vim'
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asynctasks.vim' TODO
+" Plug 'skywind3000/asyncrun.vim'
 
 " Vim Applications
-Plug 'itchyny/calendar.vim'
+" Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
-Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
+" Plug 'luochen1990/rainbow'
+" Plug 'mg979/vim-xtabline' TODO
 Plug 'ryanoasis/vim-devicons'
-Plug 'wincent/terminus'
+" Plug 'wincent/terminus'
 
 " Other useful utilities
-Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
+" Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 " Plug 'makerj/vim-pdf'
 "Plug 'xolox/vim-session'
 "Plug 'xolox/vim-misc' " vim-session dep
@@ -578,8 +580,8 @@ set lazyredraw
 " ===
 " === Dress up my vim
 " ===
-set termguicolors " enable true colors support
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set termguicolors " enable true colors support TODO
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1 TODO
 "set background=dark
 "let ayucolor="mirage"
 "let g:oceanic_next_terminal_bold = 1
@@ -588,7 +590,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "color dracula
 "color one
-color deus
+" color deus TODO
 "color gruvbox
 "let ayucolor="light"
 "color ayu
@@ -596,7 +598,7 @@ color deus
 "set background=light
 "set cursorcolumn
 
-hi NonText ctermfg=gray guifg=grey10
+" hi NonText ctermfg=gray guifg=grey10 TODO
 "hi SpecialKey ctermfg=blue guifg=grey70
 
 " ===================== Start of Plugin Settings =====================
@@ -623,7 +625,7 @@ let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>G :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
@@ -720,10 +722,10 @@ noremap <silent> <leader>ts :CocList tasks<CR>
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-e> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-e>'
-let g:coc_snippet_prev = '<c-n>'
-imap <C-e> <Plug>(coc-snippets-expand-jump)
-let g:snips_author = 'David Chen'
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <Tab> <Plug>(coc-snippets-expand-jump)
+let g:snips_author = 'Yang Tianming'
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 
@@ -795,12 +797,12 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
-let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
+" let g:Lf_CommandMap = {
+" \   '<C-k>': ['<C-u>'],
+" \   '<C-j>': ['<C-e>'],
+" \   '<C-]>': ['<C-v>'],
+" \   '<C-p>': ['<C-n>'],
+" \}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
@@ -814,8 +816,8 @@ let g:Lf_UseCache = 0
 " ===
 " === CTRLP (Dependency for omnisharp)
 " ===
-let g:ctrlp_map = ''
-let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_map = ''
+" let g:ctrlp_cmd = 'CtrlP'
 
 
 " ===
@@ -845,7 +847,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
+noremap <leader>L :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -853,10 +855,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
+	nmap <buffer> j <plug>UndotreeNextState
+	nmap <buffer> k <plug>UndotreePreviousState
+	nmap <buffer> J 5<plug>UndotreeNextState
+	nmap <buffer> K 5<plug>UndotreePreviousState
 endfunc
 
 
@@ -879,28 +881,28 @@ endfunc
 " ===
 "let g:VM_theme             = 'iceblue'
 "let g:VM_default_mappings = 0
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
-let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']          = ''
-let g:VM_maps['Find Prev']          = ''
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-n>'
-let g:VM_maps["Undo"]               = 'l'
-let g:VM_maps["Redo"]               = '<C-r>'
+" let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+" let g:VM_maps                       = {}
+" let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+" let g:VM_maps['i']                  = 'k'
+" let g:VM_maps['I']                  = 'K'
+" let g:VM_maps['Find Under']         = '<C-k>'
+" let g:VM_maps['Find Subword Under'] = '<C-k>'
+" let g:VM_maps['Find Next']          = ''
+" let g:VM_maps['Find Prev']          = ''
+" let g:VM_maps['Remove Region']      = 'q'
+" let g:VM_maps['Skip Region']        = '<c-n>'
+" let g:VM_maps["Undo"]               = 'l'
+" let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
 " === Far.vim
 " ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+" noremap <LEADER>f :F  **/*<left><left><left><left><left>
+" let g:far#mapping = {
+" 		\ "replace_undo" : ["l"],
+" 		\ }
 
 
 " ===
@@ -974,69 +976,69 @@ noremap <LEADER>gi :FzfGitignore<CR>
 " === vimtex
 " ===
 "let g:vimtex_view_method = ''
-let g:vimtex_view_general_viewer = 'llpp'
-let g:vimtex_mappings_enabled = 0
-let g:vimtex_text_obj_enabled = 0
-let g:vimtex_motion_enabled = 0
-let maplocalleader=' '
+" let g:vimtex_view_general_viewer = 'llpp'
+" let g:vimtex_mappings_enabled = 0
+" let g:vimtex_text_obj_enabled = 0
+" let g:vimtex_motion_enabled = 0
+" let maplocalleader=' '
 
 
 " ===
 " === vim-calendar
 " ===
 "noremap \c :Calendar -position=here<CR>
-noremap \\ :Calendar -view=clock -position=here<CR>
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-augroup calendar-mappings
-	autocmd!
-	" diamond cursor
-	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
-	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
-	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
-	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
-	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
-	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
-	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
-	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
-	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
-	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
-	" unmap <C-n>, <C-p> for other plugins
-	autocmd FileType calendar nunmap <buffer> <C-n>
-	autocmd FileType calendar nunmap <buffer> <C-p>
-augroup END
+" noremap \\ :Calendar -view=clock -position=here<CR>
+" let g:calendar_google_calendar = 1
+" let g:calendar_google_task = 1
+" augroup calendar-mappings
+" 	autocmd!
+" 	" diamond cursor
+" 	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+" 	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+" 	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+" 	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+" 	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
+" 	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
+" 	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
+" 	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
+" 	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+" 	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+" 	" unmap <C-n>, <C-p> for other plugins
+" 	autocmd FileType calendar nunmap <buffer> <C-n>
+" 	autocmd FileType calendar nunmap <buffer> <C-p>
+" augroup END
 
 
 " ===
 " === vim-go
 " ===
-let g:go_echo_go_info = 0
-let g:go_doc_popup_window = 1
-let g:go_def_mapping_enabled = 0
-let g:go_template_autocreate = 0
-let g:go_textobj_enabled = 0
-let g:go_auto_type_info = 1
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_types = 1
-let g:go_highlight_variable_assignments = 0
-let g:go_highlight_variable_declarations = 0
-let g:go_doc_keywordprg_enabled = 0
+" let g:go_echo_go_info = 0
+" let g:go_doc_popup_window = 1
+" let g:go_def_mapping_enabled = 0
+" let g:go_template_autocreate = 0
+" let g:go_textobj_enabled = 0
+" let g:go_auto_type_info = 1
+" let g:go_def_mapping_enabled = 0
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_format_strings = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_function_parameters = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_space_tab_error = 1
+" let g:go_highlight_string_spellcheck = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_trailing_whitespace_error = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_variable_assignments = 0
+" let g:go_highlight_variable_declarations = 0
+" let g:go_doc_keywordprg_enabled = 0
 
 
 " ===
@@ -1060,45 +1062,45 @@ augroup END
 " ===
 " === OmniSharp
 " ===
-let g:OmniSharp_typeLookupInPreview = 1
-let g:omnicomplete_fetch_full_documentation = 1
+" let g:OmniSharp_typeLookupInPreview = 1
+" let g:omnicomplete_fetch_full_documentation = 1
 
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_highlight_types = 2
-let g:OmniSharp_selector_ui = 'ctrlp'
+" let g:OmniSharp_server_use_mono = 1
+" let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_highlight_types = 2
+" let g:OmniSharp_selector_ui = 'ctrlp'
 
-autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
-autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
-autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
-autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
-autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
+" autocmd Filetype cs nnoremap <buffer> gd :OmniSharpPreviewDefinition<CR>
+" autocmd Filetype cs nnoremap <buffer> gr :OmniSharpFindUsages<CR>
+" autocmd Filetype cs nnoremap <buffer> gy :OmniSharpTypeLookup<CR>
+" autocmd Filetype cs nnoremap <buffer> ga :OmniSharpGetCodeActions<CR>
+" autocmd Filetype cs nnoremap <buffer> <LEADER>rn :OmniSharpRename<CR><C-N>:res +5<CR>
 
-sign define OmniSharpCodeActions text=💡
+" sign define OmniSharpCodeActions text=💡
 
-augroup OSCountCodeActions
-	autocmd!
-	autocmd FileType cs set signcolumn=yes
-	autocmd CursorHold *.cs call OSCountCodeActions()
-augroup END
+" augroup OSCountCodeActions
+" 	autocmd!
+" 	autocmd FileType cs set signcolumn=yes
+" 	autocmd CursorHold *.cs call OSCountCodeActions()
+" augroup END
 
-function! OSCountCodeActions() abort
-	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
-	if !OmniSharp#IsServerRunning() | return | endif
-	let opts = {
-				\ 'CallbackCount': function('s:CBReturnCount'),
-				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
-				\}
-	call OmniSharp#CountCodeActions(opts)
-endfunction
+" function! OSCountCodeActions() abort
+" 	if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+" 	if !OmniSharp#IsServerRunning() | return | endif
+" 	let opts = {
+" 				\ 'CallbackCount': function('s:CBReturnCount'),
+" 				\ 'CallbackCleanup': {-> execute('sign unplace 99')}
+" 				\}
+" 	call OmniSharp#CountCodeActions(opts)
+" endfunction
 
-function! s:CBReturnCount(count) abort
-	if a:count
-		let l = getpos('.')[1]
-		let f = expand('%:p')
-		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
-	endif
-endfunction
+" function! s:CBReturnCount(count) abort
+" 	if a:count
+" 		let l = getpos('.')[1]
+" 		let f = expand('%:p')
+" 		execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+" 	endif
+" endfunction
 
 
 " ===
@@ -1123,13 +1125,13 @@ let g:EasyMotion_smartcase = 1
 " ===
 " === goyo
 " ===
-map <LEADER>gy :Goyo<CR>
+" map <LEADER>gy :Goyo<CR>
 
 
 " ===
 " === jsx
 " ===
-let g:vim_jsx_pretty_colorful_config = 1
+" let g:vim_jsx_pretty_colorful_config = 1
 
 
 " ===
@@ -1168,19 +1170,19 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 " ===
 " === rainbow
 " ===
-let g:rainbow_active = 1
+" let g:rainbow_active = 1
 
 
 " ===
 " === xtabline
 " ===
-let g:xtabline_settings = {}
-let g:xtabline_settings.enable_mappings = 0
-let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
-let g:xtabline_settings.enable_persistance = 0
-let g:xtabline_settings.last_open_first = 1
-noremap to :XTabCycleMode<CR>
-noremap \p :echo expand('%:p')<CR>
+" let g:xtabline_settings = {}
+" let g:xtabline_settings.enable_mappings = 0
+" let g:xtabline_settings.tabline_modes = ['tabs', 'buffers']
+" let g:xtabline_settings.enable_persistance = 0
+" let g:xtabline_settings.last_open_first = 1
+" noremap to :XTabCycleMode<CR>
+" noremap \p :echo expand('%:p')<CR>
 
 
 " ===
@@ -1211,8 +1213,8 @@ noremap \p :echo expand('%:p')<CR>
 " ===
 " === suda.vim
 " ===
-cnoreabbrev sudowrite w suda://%
-cnoreabbrev sw w suda://%
+" cnoreabbrev sudowrite w suda://%
+" cnoreabbrev sw w suda://%
 
 
 " ===
@@ -1280,8 +1282,8 @@ let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 " ===
 " === vim-subversive
 " ===
-nmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
+" nmap s <plug>(SubversiveSubstitute)
+" nmap ss <plug>(SubversiveSubstituteLine)
 
 
 " ===
@@ -1313,40 +1315,40 @@ let g:asyncrun_open = 6
 " ===
 " === dart-vim-plugin
 " ===
-let g:dart_style_guide = 2
-let g:dart_format_on_save = 1
-let g:dartfmt_options = ["-l 100"]
+" let g:dart_style_guide = 2
+" let g:dart_format_on_save = 1
+" let g:dartfmt_options = ["-l 100"]
 
 
 " ===
 " === tcomment_vim
 " ===
-nnoremap ci cl
-let g:tcomment_textobject_inlinecomment = ''
-nmap <LEADER>cn g>c
-vmap <LEADER>cn g>
-nmap <LEADER>cu g<c
-vmap <LEADER>cu g<
+" nnoremap ci cl
+" let g:tcomment_textobject_inlinecomment = ''
+" nmap <LEADER>cn g>c
+" vmap <LEADER>cn g>
+" nmap <LEADER>cu g<c
+" vmap <LEADER>cu g<
 
 
 " ===
 " === vim-move
 " ===
-let g:move_key_modifier = 'C'
+" let g:move_key_modifier = 'C'
 
 
 " ===
 " === any-jump
 " ===
-nnoremap j :AnyJump<CR>
-let g:any_jump_window_width_ratio  = 0.8
-let g:any_jump_window_height_ratio = 0.9
+" nnoremap j :AnyJump<CR>
+" let g:any_jump_window_width_ratio  = 0.8
+" let g:any_jump_window_height_ratio = 0.9
 
 
 " ===
 " === typescript-vim
 " ===
-let g:typescript_ignore_browserwords = 1
+" let g:typescript_ignore_browserwords = 1
 
 
 " ===
@@ -1359,15 +1361,15 @@ let g:agit_no_default_mappings = 1
 " ===
 " === nvim-treesitter
 " ===
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
+"   highlight = {
+"     enable = true,              -- false will disable the whole extension
+"     disable = { "c", "rust" },  -- list of language that will be disabled
+"   },
+" }
+" EOF
 
 
 " ===

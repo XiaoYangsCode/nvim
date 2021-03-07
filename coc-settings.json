@@ -59,8 +59,8 @@
 	"diagnostic.virtualText": true,
 	"codeLens.enable": true,
 	"list.previewHighlightGroup": "Statement",
-	"list.nextKeymap": "<C-e>",
-	"list.previousKeymap": "<C-u>",
+	"list.nextKeymap": "<C-j>",
+	"list.previousKeymap": "<C-k>",
 	"snippets.ultisnips.directories": [
 		"$HOME/.config/nvim/Ultisnips/",
 		"$HOME/.config/nvim/plugged/vim-snippets/UltiSnips/"
