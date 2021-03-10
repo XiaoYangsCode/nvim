@@ -415,7 +415,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kdheepak/lazygit.nvim'
-"Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
+Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
