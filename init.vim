@@ -43,19 +43,18 @@ source ~/.config/nvim/_machine_specific.vim
 "set clipboard=unnamedplus
 let &t_ut=''
 set autochdir
- " filetype on
- " filetype indent on
- " filetype plugin on
+"filetype on
+"filetype indent on
+"filetype plugin on
  " filetype plugin indent on
  " set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
  " set termencoding=utf-8
- " set encoding=utf-8
- set encoding=UTF-8
+set encoding=UTF-8
 
 " ===
 " === Editor behavior
 " ===
-syntax on
+"syntax on
 set exrc
 set secure
 set number
@@ -105,19 +104,19 @@ endif
 set colorcolumn=100
 set updatetime=100
 set virtualedit=block
-
+set re=0
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
 " ===
 " === log file path
 " ===
-"  let g:LanguageClient_loggingFile =  expand('~/.config/nvim/log/LanguageClient.log') 
+"  let g:LanguageClient_loggingFile =  expand('~/.config/nvim/log/LanguageClient.log')
 "  let g:python3_host_prog='/opt/anaconda3/envs/ml385/bin/python'
 
 " let g:mkdp_browser = 'chromium'
 " let g:mkdp_browserfunc = 'open '
- 
+
 " ===
 " === Terminal Behaviors
 " ===
@@ -194,11 +193,10 @@ noremap <LEADER><CR> :nohlsearch<CR>
 " === Cursor Movement
 " ===
 " New cursor movement (the default arrow keys are used for resizing windows)
-"	 ^
-"	 k 
-" < h   l >
-"	 j
-"	 v
+"	   ^
+"	   k
+" <h   l >
+"	   j
 "noremap <silent> u k
 "noremap <silent> n h
 "noremap <silent> e j
@@ -342,7 +340,7 @@ noremap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-"noremap tx :r !figlet 
+"noremap tx :r !figlet
 
 " find and replace
 "noremap \s :%s//g<left><left>
@@ -370,9 +368,6 @@ func! CompileRunGcc()
 		:sp
 		:res -15
 		:term ./%<
-	" elseif &filetype == 'java'
-	" 	exec "!javac %"
-	" 	exec "!time java %<"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
@@ -383,20 +378,6 @@ func! CompileRunGcc()
 		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
 		exec "InstantMarkdownPreview"
-	" elseif &filetype == 'tex'
-	" 	silent! exec "VimtexStop"
-	" 	silent! exec "VimtexCompile"
-	" elseif &filetype == 'dart'
-	" 	exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-	" 	silent! exec "CocCommand flutter.dev.openDevLog"
-	" elseif &filetype == 'javascript'
-	" 	set splitbelow
-	" 	:sp
-	" 	:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	" elseif &filetype == 'go'
-	" 	set splitbelow
-	" 	:sp
-	" 	:term go run .
 	endif
 endfunc
 
@@ -414,6 +395,28 @@ Plug 'ryanoasis/vim-devicons'
 " theme for neovim
 Plug 'joshdick/onedark.vim'
 
+" Auto Complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
+" commender tool
+Plug 'scrooloose/nerdcommenter'
+" Python
+Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+" Markdown
+" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+" Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+" Plug 'dkarter/bullets.vim'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'kdheepak/lazygit.nvim'
+"Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
+
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -427,24 +430,6 @@ Plug 'liuchengxu/vista.vim'
 " Debugger
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
-" Auto Complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" commender tool
-Plug 'scrooloose/nerdcommenter'
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
-"Plug 'kdheepak/lazygit.nvim'
-
-" Python
-" Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
-
-" Markdown
-" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
-" Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-" Plug 'dkarter/bullets.vim'
-
 " Other filetypes
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
@@ -452,11 +437,6 @@ Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'easymotion/vim-easymotion'
 
 call plug#end()
-set re=0
-
-" experimental
-set lazyredraw
-"set regexpengine=1
 
 
 " ===================== Start of Plugin Settings =====================
@@ -494,9 +474,6 @@ if (has("autocmd"))
 	let s:dark_yellow = { "gui": "#d19a66 ", "cterm": "145", "cterm16" : "7" }
 	let s:black = { "gui": "#282c34", "cterm": "145", "cterm16" : "7" }
 	autocmd ColorScheme * call onedark#extend_highlight("Visual", {"fg": s:black, "bg": s:dark_yellow} )
- "   let s:dark_yellow = { "gui": "#d19a66 ", "cterm": "145", "cterm16" : "7" }
-		"let s:black = { "gui": "#282c34", "cterm": "145", "cterm16" : "7" }
-		"autocmd ColorScheme * call onedark#extend_highlight("Delimiter", {"fg": s:black, "bg": s:dark_yellow} )
   augroup END
 endif
 " onedark.vim override: Don't set a background color when running in a terminal;
@@ -517,6 +494,22 @@ endif
 " \ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
 " \}
 colorscheme onedark
+" semshi colors
+hi semshiLocal           ctermfg=209 guifg=#ff875f
+hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+hi semshiParameter       ctermfg=75  guifg=#5fafff
+hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+hi semshiFree            ctermfg=218 guifg=#ffafd7
+hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#666699
+
+hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+sign define semshiError text=E> texthl=semshiErrorSign
 
 " ===
 " === vim-scrollstatus for airline
@@ -529,50 +522,41 @@ let g:airline_section_z = airline#section#create([
 			\ ])
 let g:airline_powerline_fonts = 0
 let g:airline_theme='onedark'	 " for one theme
-
-" ==
-" == GitGutter
-" ==
-" let g:gitgutter_signs = 0
-let g:gitgutter_sign_allow_clobber = 0
-let g:gitgutter_map_keys = 0
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_preview_win_floating = 1
-let g:gitgutter_sign_added = '▎'
-let g:gitgutter_sign_modified = '░'
-let g:gitgutter_sign_removed = '▏'
-let g:gitgutter_sign_removed_first_line = '▔'
-let g:gitgutter_sign_modified_removed = '▒'
-" autocmd BufWritePost * GitGutter
-nnoremap <LEADER>gf :GitGutterFold<CR>
-"nnoremap <LEADER>G :GitGutterPreviewHunk<CR>
-"nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-"nnoremap <LEADER>g= :GitGutterNextHunk<CR>
-
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 
 " ===
 " === coc.nvim
 " ===
 	"\ 'coc-gitignore',
-let g:coc_global_extensions = [
-	\ 'coc-diagnostic',
-	\ 'coc-explorer',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-pairs',
-	\ 'coc-python',
-	\ 'coc-vimlsp',]
+	"\ 'coc-git',
+"let g:coc_global_extensions = [
+	"\ 'coc-explorer',
+	"\ 'coc-highlight',
+	"\ 'coc-json',
+	"\ 'coc-jedi',
+	"\ 'coc-lists',
+	"\ 'coc-marketplace',
+	"\ 'coc-snippets',
+	"\ 'coc-diagnostic',
+	"\ 'coc-pairs',
+	"\ 'coc-yank',
+	"\ 'coc-vimlsp',]
+
+
 " Use tab to completion code
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
-	  \ coc#refresh()
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-o> coc#refresh()
 " Make <CR> auto-select the first completion item and notify coc.nvim to
@@ -584,9 +568,11 @@ nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :tab sp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 " Use K to show documentation in preview window.
 nnoremap <silent> <LEADER>H :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -601,7 +587,7 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 "And set it's color
 autocmd CursorHold * silent call CocActionAsync('highlight')
-hi CocHighlightText guibg=#666699 ctermbg=150 
+hi CocHighlightText guibg=#666699 ctermbg=150
 "hi CocHighlightText ctermfg=231 guifg=#ffffff ctermbg=60 guibg=#4b5269
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -619,16 +605,47 @@ nmap <leader>rn <Plug>(coc-rename)
 "nmap <leader>f  <Plug>(coc-format-selected)
 " coc-explorer
 nnoremap <LEADER>T :CocCommand explorer<CR>
+" set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
+let g:lightline = {
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  \   ],
+  \   'right':[
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  \     [ 'blame' ]
+  \   ],
+  \ },
+  \ 'component_function': {
+  \   'blame': 'LightlineGitBlame',
+  \ }
+\ }
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+
 
 " ===
-" === nerdtree
+" === tabular
 " ===
-"nnoremap <LEADER>T :NERDTreeToggle<CR>
-
-
-
-
-
+vmap ga :Tabularize /
+" ===
+" === pydocstring
+" ===
+nmap <silent> <C-_> <Plug>(pydocstring)
+let g:pydocstring_formatter = 'numpy'
+" ===
+" === vim-markdown-toc
+" ===
+"let g:vmt_auto_update_on_save = 0
+"let g:vmt_dont_insert_fence = 1
+let g:vmt_cycle_list_item_markers = 1
+let g:vmt_fence_text = 'TOC'
+let g:vmt_fence_closing_text = '/TOC'
 " ===
 " === vim-instant-markdown
 " ===
@@ -639,15 +656,61 @@ let g:instant_markdown_autostart = 0
 " let g:instant_markdown_allow_external_content = 0
 " let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autoscroll = 1
-
-
 " ===
 " === vim-table-mode
 " ===
 noremap <LEADER>tm :TableModeToggle<CR>
 "let g:table_mode_disable_mappings = 1
 let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+" ===
+" === Bullets.vim
+" ===
+" let g:bullets_set_mappings = 0
+let g:bullets_enabled_file_types = [
+			\ 'markdown',
+			\ 'text',
+			\ 'gitcommit',
+			\ 'scratch'
+			\]
 
+
+
+" ==
+" == GitGutter
+" ==
+" let g:gitgutter_signs = 0
+"let g:gitgutter_sign_allow_clobber = 0
+"let g:gitgutter_map_keys = 0
+"let g:gitgutter_override_sign_column_highlight = 0
+"let g:gitgutter_preview_win_floating = 1
+"let g:gitgutter_sign_added = '▎'
+"let g:gitgutter_sign_modified = '░'
+"let g:gitgutter_sign_removed = '▏'
+"let g:gitgutter_sign_removed_first_line = '▔'
+"let g:gitgutter_sign_modified_removed = '▒'
+autocmd BufWritePost * GitGutter
+nnoremap <LEADER>gf :GitGutterFold<CR>
+nnoremap <LEADER>G :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+
+" ===
+" === lazygit.nvim
+" ===
+noremap <c-g> :LazyGit<CR>
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
+"let g:lazygit_opened=0
+
+" ===
+" === vim-rooter
+" ===
+let g:rooter_patterns = ['__vim_project_root', '.git/']
+let g:rooter_silent_chdir = 1
 
 " ===
 " === FZF
@@ -713,19 +776,6 @@ let g:Lf_UseMemoryCache = 0
 let g:Lf_UseCache = 0
 
 
-
-" ===
-" === Bullets.vim
-" ===
-" let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
-			\ 'markdown',
-			\ 'text',
-			\ 'gitcommit',
-			\ 'scratch'
-			\]
-
-
 " ===
 " === Vista.vim
 " ===
@@ -768,10 +818,6 @@ nmap <Leader>m <Plug>(easymotion-overwin-f)
 "map  'w <Plug>(easymotion-bd-w)
 "nmap 'w <Plug>(easymotion-overwin-w)
 
-" ===
-" === tabular
-" ===
-vmap ga :Tabularize /
 
 " ===
 " === vimspector
@@ -791,32 +837,6 @@ sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 
-
-" ===
-" === vim-markdown-toc
-" ===
-"let g:vmt_auto_update_on_save = 0
-"let g:vmt_dont_insert_fence = 1
-let g:vmt_cycle_list_item_markers = 1
-let g:vmt_fence_text = 'TOC'
-let g:vmt_fence_closing_text = '/TOC'
-
-
-" ===
-" === vim-rooter
-" ===
-let g:rooter_patterns = ['__vim_project_root', '.git/']
-let g:rooter_silent_chdir = 1
-
-
-" ===
-" === lazygit.nvim
-" ===
-noremap <c-g> :LazyGit<CR>
-let g:lazygit_floating_window_winblend = 0 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
-let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
-let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
 
 
 " ===================== End of Plugin Settings =====================
