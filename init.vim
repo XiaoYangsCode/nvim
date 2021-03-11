@@ -45,7 +45,7 @@ let &t_ut=''
 set autochdir
 "filetype on
 "filetype indent on
-"filetype plugin on
+filetype plugin on
  " filetype plugin indent on
  " set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
  " set termencoding=utf-8
@@ -109,15 +109,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 
 " ===
-" === log file path
-" ===
-"  let g:LanguageClient_loggingFile =  expand('~/.config/nvim/log/LanguageClient.log')
-"  let g:python3_host_prog='/opt/anaconda3/envs/ml385/bin/python'
-
-" let g:mkdp_browser = 'chromium'
-" let g:mkdp_browserfunc = 'open '
-
-" ===
 " === Terminal Behaviors
 " ===
 let g:neoterm_autoscroll = 1
@@ -157,14 +148,7 @@ noremap S :w<CR>
 
 " Open the vimrc file anytime
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
-noremap <LEADER>rv :e .nvimrc<CR>
-
-" Undo operations
-"noremap l u
-
-" Insert Key
-"noremap k i
-"noremap K I
+"noremap <LEADER>rv :e .nvimrc<CR>
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -179,16 +163,6 @@ nnoremap > >>
 " Search
 noremap <LEADER><CR> :nohlsearch<CR>
 
-" Adjacent duplicate words
-"noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
-
-" Space to Tab
-"nnoremap <LEADER>tt :%s/	/\t/g
-"vnoremap <LEADER>tt :s/	/\t/g
-
-" nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
-
-
 " ===
 " === Cursor Movement
 " ===
@@ -197,12 +171,6 @@ noremap <LEADER><CR> :nohlsearch<CR>
 "	   k
 " <h   l >
 "	   j
-"noremap <silent> u k
-"noremap <silent> n h
-"noremap <silent> e j
-"noremap <silent> i l
-"noremap <silent> gu gk
-"noremap <silent> ge gj
 noremap <silent> \v v$h
 
 " U/E keys for 5 times u/e (faster navigation)
@@ -217,14 +185,6 @@ noremap <silent> L $
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
-
-" set h (same as n, cursor left) to 'end of word'
-"noremap h e
-
-" Ctrl + U or E will move up/down the view port without moving the cursor
-"noremap <C-U> 5<C-y>
-"noremap <C-E> 5<C-e>
-
 
 source ~/.config/nvim/cursor.vim
 
@@ -306,13 +266,6 @@ noremap tmj :-tabmove<CR>
 noremap tmk :+tabmove<CR>
 
 
-" ===
-" === Markdown Settings
-" ===
-" Snippets
-source ~/.config/nvim/md-snippets.vim
-" auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
@@ -334,7 +287,7 @@ noremap <LEADER>sc :set spell!<CR>
 " Press ` to change case (instead of ~)
 "noremap ` ~
 
-noremap <C-c> zz
+"noremap <C-c> zz
 
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -374,10 +327,8 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
+		exec "MarkdownPreviewToggle"
 	endif
 endfunc
 
@@ -405,16 +356,17 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 " Markdown
-" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-" Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
-" Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-" Plug 'dkarter/bullets.vim'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+ Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'dkarter/bullets.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'kdheepak/lazygit.nvim'
+"Plug 'kdheepak/lazygit.nvim'
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 
 " File navigation
@@ -591,42 +543,34 @@ hi CocHighlightText guibg=#666699 ctermbg=150
 "hi CocHighlightText ctermfg=231 guifg=#ffffff ctermbg=60 guibg=#4b5269
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-  " nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  " inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  " inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  " vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
+
 " Formatting selected code. auto to when save
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
 " coc-explorer
 nnoremap <LEADER>T :CocCommand explorer<CR>
 " set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-let g:lightline = {
-  \ 'active': {
-  \   'left': [
-  \     [ 'mode', 'paste' ],
-  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
-  \   ],
-  \   'right':[
-  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-  \     [ 'blame' ]
-  \   ],
-  \ },
-  \ 'component_function': {
-  \   'blame': 'LightlineGitBlame',
-  \ }
-\ }
+"let g:lightline = {
+  "\ 'active': {
+  "\   'left': [
+  "\     [ 'mode', 'paste' ],
+  "\     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  "\   ],
+  "\   'right':[
+  "\     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  "\     [ 'blame' ]
+  "\   ],
+  "\ },
+  "\ 'component_function': {
+  "\   'blame': 'LightlineGitBlame',
+  "\ }
+"\ }
 
-function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  " return blame
-  return winwidth(0) > 120 ? blame : ''
-endfunction
+"function! LightlineGitBlame() abort
+  "let blame = get(b:, 'coc_git_blame', '')
+  "" return blame
+  "return winwidth(0) > 120 ? blame : ''
+"endfunction
 
 
 " ===
@@ -641,37 +585,31 @@ let g:pydocstring_formatter = 'numpy'
 " ===
 " === vim-markdown-toc
 " ===
-"let g:vmt_auto_update_on_save = 0
-"let g:vmt_dont_insert_fence = 1
 let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 " ===
-" === vim-instant-markdown
+" === markdown-preview.nvim
 " ===
-let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
-" let g:instant_markdown_open_to_the_world = 1
-" let g:instant_markdown_allow_unsafe_content = 1
-" let g:instant_markdown_allow_external_content = 0
-" let g:instant_markdown_mathjax = 1
-let g:instant_markdown_autoscroll = 1
+"let g:mkdp_auto_start = 1
+"let g:mkdp_open_to_the_world = 1
 " ===
 " === vim-table-mode
 " ===
 noremap <LEADER>tm :TableModeToggle<CR>
-"let g:table_mode_disable_mappings = 1
 let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+let g:table_mode_corner =  '|'
 " ===
 " === Bullets.vim
 " ===
-" let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
-			\ 'markdown',
-			\ 'text',
-			\ 'gitcommit',
-			\ 'scratch'
-			\]
+let g:bullets_checkbox_markers = '    X'
+" ===
+" === Markdown Settings
+" ===
+" Snippets
+source ~/.config/nvim/md-snippets.vim
+" auto spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 
@@ -704,7 +642,6 @@ let g:lazygit_floating_window_winblend = 0 " transparency of floating window
 let g:lazygit_floating_window_scaling_factor = 1.0 " scaling factor for floating window
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 let g:lazygit_use_neovim_remote = 1 " for neovim-remote support
-"let g:lazygit_opened=0
 
 " ===
 " === vim-rooter
@@ -722,7 +659,6 @@ nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
-"noremap <C-t> :BTags<CR>
 " noremap <silent> <C-l> :Lines<CR>
 noremap <silent> <C-w> :Buffers<CR>
 noremap <leader>; :History:<CR>
@@ -748,24 +684,16 @@ command! BD call fzf#run(fzf#wrap({
 \ }))
 
 noremap <c-d> :BD<CR>
-
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
 
 " ===
 " === Leaderf
 " ===
-" let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
-" let g:Lf_CommandMap = {
-" \   '<C-k>': ['<C-u>'],
-" \   '<C-j>': ['<C-e>'],
-" \   '<C-]>': ['<C-v>'],
-" \   '<C-p>': ['<C-n>'],
-" \}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
@@ -789,11 +717,6 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
-" function! NearestMethodOrFunction() abort
-" 	return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
-" set statusline+=%{NearestMethodOrFunction()}
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 let g:scrollstatus_size = 15
 
@@ -803,21 +726,8 @@ let g:scrollstatus_size = 15
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_do_shade = 0
 let g:EasyMotion_smartcase = 1
-" <Leader>f{char} to move to {char}
 map  <Leader>m <Plug>(easymotion-bd-f)
 nmap <Leader>m <Plug>(easymotion-overwin-f)
-" map ' <Plug>(easymotion-overwin-f2)
-" nmap ' <Plug>(easymotion-overwin-f2)
-"map E <Plug>(easymotion-j)
-"map U <Plug>(easymotion-k)
-"nmap f <Plug>(easymotion-overwin-f)
-"map \; <Plug>(easymotion-prefix)
-"nmap ' <Plug>(easymotion-overwin-f2)
-"map 'l <Plug>(easymotion-bd-jk)
-"nmap 'l <Plug>(easymotion-overwin-line)
-"map  'w <Plug>(easymotion-bd-w)
-"nmap 'w <Plug>(easymotion-overwin-w)
-
 
 " ===
 " === vimspector
