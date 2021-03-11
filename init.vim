@@ -250,22 +250,29 @@ noremap srh <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
-noremap <LEADER>q <C-w>j:q<CR>
+" noremap <LEADER>q <C-w>j:q<CR>
 
 
 " ===
 " === Tab management
 " ===
-" Create a new tab with tu
-noremap tu :tabe<CR>
+" Create a new tab with tn
+noremap tn :tabe<CR>
 " Move around tabs with tj and tk
-noremap tj :-tabnext<CR>
-noremap tk :+tabnext<CR>
-" Move the tabs with tmj and tmk
-noremap tmj :-tabmove<CR>
-noremap tmk :+tabmove<CR>
+noremap tj :tabn<CR>
+noremap tk :tabp<CR>
+" Close tag
+noremap tc :tabc<CR>
+" Close other tag
+noremap to :tabo<CR>
 
-
+" ===
+" === Markdown Settings
+" ===
+" Snippets
+source ~/.config/nvim/md-snippets.vim
+" auto spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
@@ -284,11 +291,6 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 " Spelling Check with <space>sc
 noremap <LEADER>sc :set spell!<CR>
 
-" Press ` to change case (instead of ~)
-"noremap ` ~
-
-"noremap <C-c> zz
-
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
 
@@ -296,10 +298,7 @@ autocmd BufEnter * silent! lcd %:p:h
 "noremap tx :r !figlet
 
 " find and replace
-"noremap \s :%s//g<left><left>
-
-" set wrap
-"noremap <LEADER>sw :set wrap<CR>
+noremap \s :%s//g<left><left>
 
 " press f10 to show hlgroup
 function! SynGroup()
@@ -549,6 +548,8 @@ nmap <leader>rn <Plug>(coc-rename)
 "nmap <leader>f  <Plug>(coc-format-selected)
 " coc-explorer
 nnoremap <LEADER>T :CocCommand explorer<CR>
+" coc-snippets
+let g:snips_author = 'Tianming'
 " set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 "let g:lightline = {
   "\ 'active': {
@@ -603,13 +604,6 @@ let g:table_mode_corner =  '|'
 " === Bullets.vim
 " ===
 let g:bullets_checkbox_markers = '    X'
-" ===
-" === Markdown Settings
-" ===
-" Snippets
-source ~/.config/nvim/md-snippets.vim
-" auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 
