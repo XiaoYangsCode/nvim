@@ -173,7 +173,7 @@ noremap <LEADER><CR> :nohlsearch<CR>
 "	   j
 noremap <silent> \v v$h
 
-" U/E keys for 5 times u/e (faster navigation)
+" J/K keys for 5 times j/k (faster navigation)
 noremap <silent> K 5k
 noremap <silent> J 5j
 
@@ -425,6 +425,8 @@ if (has("autocmd"))
 	let s:dark_yellow = { "gui": "#d19a66 ", "cterm": "145", "cterm16" : "7" }
 	let s:black = { "gui": "#282c34", "cterm": "145", "cterm16" : "7" }
 	autocmd ColorScheme * call onedark#extend_highlight("Visual", {"fg": s:black, "bg": s:dark_yellow} )
+	let s:dark_yellow = { "gui": "#000024", "cterm": "145", "cterm16" : "7" }
+	autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": s:dark_yellow} )
   augroup END
 endif
 " onedark.vim override: Don't set a background color when running in a terminal;
