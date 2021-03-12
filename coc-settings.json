@@ -151,11 +151,14 @@
 			"cd",
 			"open"
 		],
-		//		"e": "open",
+		"e": "open",
 		//		"<cs>": "open:split",
 		"E": "open:vsplit",
 		//		"t": "open:tab",
-		//		"<bs>": ["wait", "gotoParent"],
+		//"<bs>": [
+		//"wait",
+		//"gotoParent"
+		//],
 		//		"gs": ["wait", "reveal:select"],
 		//		"il": "preview:labeling",
 		//		"ic": "preview:content",

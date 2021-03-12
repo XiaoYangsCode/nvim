@@ -425,8 +425,8 @@ if (has("autocmd"))
 	let s:dark_yellow = { "gui": "#d19a66 ", "cterm": "145", "cterm16" : "7" }
 	let s:black = { "gui": "#282c34", "cterm": "145", "cterm16" : "7" }
 	autocmd ColorScheme * call onedark#extend_highlight("Visual", {"fg": s:black, "bg": s:dark_yellow} )
-	let s:dark_yellow = { "gui": "#000024", "cterm": "145", "cterm16" : "7" }
-	autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": s:dark_yellow} )
+	let s:pop_grey = { "gui": "#000024", "cterm": "145", "cterm16" : "7" }
+	autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": s:pop_grey} )
   augroup END
 endif
 " onedark.vim override: Don't set a background color when running in a terminal;
