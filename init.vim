@@ -375,6 +375,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'airblade/vim-rooter'
 " Plug 'RRethy/vim-illuminate'
+Plug 'kevinhwang91/rnvimr'
 " Taglist
 Plug 'liuchengxu/vista.vim'
 
@@ -651,7 +652,7 @@ let g:rooter_silent_chdir = 1
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/yangtianming/.linuxbrew/opt/fzf
-nnoremap <c-p> :Leaderf file<CR>
+"nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
@@ -699,6 +700,20 @@ let g:Lf_WildIgnore = {
 let g:Lf_UseMemoryCache = 0
 let g:Lf_UseCache = 0
 
+" ===
+" === Rnvimr
+" ===
+nnoremap <c-p> :RnvimrToggle<CR>
+let g:rnvimr_enable_picker = 1
+"let g:rnvimr_enable_ex = 1
+" Map Rnvimr action
+"let g:rnvimr_action = {
+            "\ '<C-t>': 'NvimEdit tabedit',
+            "\ '<C-x>': 'NvimEdit split',
+            "\ '<C-v>': 'NvimEdit vsplit',
+            "\ 'gw': 'JumpNvimCwd',
+            "\ 'yw': 'EmitRangerCwd'
+            "\ }
 
 " ===
 " === Vista.vim
