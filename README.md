@@ -24,7 +24,11 @@
 	sudo dpkg -i ripgrep_12.1.1_amd64.deb
 	```
 - change python path in `_machine_specific.vim`
-	
+- set default conda env
+  ```bash
+  conda activate ml385
+  #conda config --set auto_activate_base false # set not auto start
+  ```
 
 ## Requirements
 | package              | des                                         |
