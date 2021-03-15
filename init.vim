@@ -574,7 +574,10 @@ let g:snips_author = 'Tianming'
   "" return blame
   "return winwidth(0) > 120 ? blame : ''
 "endfunction
-
+" language server
+let g:LanguageClient_serverCommands = {
+    \ 'sh': ['bash-language-server', 'start']
+    \ }
 
 " ===
 " === tabular
