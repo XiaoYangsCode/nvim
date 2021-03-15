@@ -1,3 +1,5 @@
+# How to install
+git clone to `~/.config/`
 # file navigation
 ## keymap
 | hotkey  | action                                 |
