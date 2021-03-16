@@ -7,6 +7,7 @@
   ```bash
   export PATH="/usr/local/Cellar/nvim/bin:$PATH"
   ```
+- change python path in `_machine_specific.vim`
 - use `checkhealth` to find some package have not been install
 - use `vim-plug` to install nvim plug
 - upgrade nodejs for ubuntu (low version on ubuntu 18.04)
@@ -23,7 +24,6 @@
 	curl -LO  https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
 	sudo dpkg -i ripgrep_12.1.1_amd64.deb
 	```
-- change python path in `_machine_specific.vim`
 - set default conda env
   ```bash
   conda activate ml385
