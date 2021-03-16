@@ -349,7 +349,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 " commender tool
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 " Python
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }

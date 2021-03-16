@@ -9,8 +9,8 @@
   ```
 - change python path in `_machine_specific.vim`
 - use `checkhealth` to find some package have not been install
-- use `vim-plug` to install nvim plug
 - upgrade nodejs for ubuntu (low version on ubuntu 18.04)
+- use `vim-plug` to install nvim plug
 - install `coc.nvim`
 
   common command:
@@ -29,6 +29,19 @@
   conda activate ml385
   #conda config --set auto_activate_base false # set not auto start
   ```
+- change utf-8 on ubuntu18.04 (if have `utf-8 error` checkhealth info )
+  ```bash
+  export LANG=en_US:UTF-8 export LANGUAGE=en_US:en
+  sudo vi /etc/default/locale
+
+  # add
+  LANG="zh_CN.UTF-8"
+  LANGUAGE="zh_CN:zh"
+  LC_ALL="zh_CN.UTF-8"
+
+  # check info
+  locale
+  ```
 
 ## Requirements
 | package              | des                                         |
@@ -44,15 +57,15 @@
 
 
 
-# file navigation
-## keymap
+# File navigation
+## Keymap
 | hotkey  | action                                 |
 |---------|----------------------------------------|
 | `<C-p>` | open ranger                            |
 | `<C-t>` | open file as tab from ranger           |
 | `<C-x>` | open file horizontal split from ranger |
 | `<C-v>` | open file vertical split from ranger   |
-## plugins
+## Plugins
 
 - kevinhwang91/rnvimr
 
