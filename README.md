@@ -59,17 +59,28 @@
 
 # File navigation
 ## Keymap
-| hotkey  | action                                 |
-|---------|----------------------------------------|
-| `<C-p>` | open ranger                            |
-| `<C-t>` | open file as tab from ranger           |
-| `<C-x>` | open file horizontal split from ranger |
-| `<C-v>` | open file vertical split from ranger   |
+| hotkey      | action                                         |
+|-------------|------------------------------------------------|
+| `<C-p>`     | open **ranger**                                |
+| `<C-t>`     | open file as tab from **ranger**               |
+| `<C-x>`     | open file horizontal split from **ranger**     |
+| `<C-v>`     | open file vertical split from **ranger**       |
+| `<C-f>`     | find keyword in all file by **fzf**            |
+| `<C-h>`     | find file history by **fzf**                   |
+| `<C-w>`     | find buffers by **fzf** (open by enter)        |
+| `<C-d>`     | find buffers by **fzf** (delete by enter)      |
+| `<leader>;` | find commond history by **fzf**                |
+| `<leader>f` | find file by **leaderF**                       |
+| `<C-t>`     | find symbols in file by **vista**              |
+| `<leader>t` | open right column to show symbols by **vista** |
+
 ## Plugins
 
 - kevinhwang91/rnvimr
-
-
+- junegunn/fzf.vim
+- Yggdroot/LeaderF
+- liuchengxu/vista.vim
+- airblade/vim-rooter
 
 # Markdown
 ## Snippets
