@@ -252,6 +252,8 @@ noremap srv <C-w>b<C-w>H
 " Press <SPACE> + q to close the window below the current window
 " noremap <LEADER>q <C-w>j:q<CR>
 
+"double click jj quit input model qickly
+inoremap jj <Esc>
 
 " ===
 " === Tab management
@@ -377,6 +379,7 @@ Plug 'airblade/vim-rooter'
 Plug 'kevinhwang91/rnvimr'
 " Taglist
 Plug 'liuchengxu/vista.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Debugger
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
@@ -711,6 +714,23 @@ let g:Lf_WildIgnore = {
 		\}
 let g:Lf_UseMemoryCache = 0
 let g:Lf_UseCache = 0
+
+" ===
+" === IndentLine
+" ===
+let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgrey ctermbg=4
+"hi IndentGuidesOdd  ctermbg=white
+"hi IndentGuidesEven ctermbg=lightgrey
+"hi IndentGuidesOdd  ctermbg=black
+"hi IndentGuidesEven ctermbg=darkgrey
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_tab_guides = 0
 
 " ===
 " === Rnvimr
