@@ -186,7 +186,7 @@ noremap <silent> L $
 noremap W 5w
 noremap B 5b
 
-source ~/.config/nvim/cursor.vim
+"source ~/.config/nvim/cursor.vim
 
 " ===
 " === Insert Mode Cursor Movement
@@ -357,10 +357,13 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
 " Markdown
+Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align (before markdown)
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
- Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
 Plug 'dkarter/bullets.vim'
+Plug 'plasticboy/vim-markdown'
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -382,12 +385,12 @@ Plug 'liuchengxu/vista.vim'
 Plug 'Yggdroot/indentLine'
 
 " Debugger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+"Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 
 " Other filetypes
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
-Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+"Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'easymotion/vim-easymotion'
 
 call plug#end()
@@ -611,7 +614,7 @@ let g:vmt_fence_closing_text = '/TOC'
 " ===
 " === markdown-preview.nvim
 " ===
-"let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 "let g:mkdp_open_to_the_world = 1
 " ===
 " === vim-table-mode
@@ -623,8 +626,25 @@ let g:table_mode_corner =  '|'
 " === Bullets.vim
 " ===
 let g:bullets_checkbox_markers = '    X'
+" ===
+" === vim-markdown
+" ===
+set conceallevel=2
+function RToc()
+    exe "/-toc .* -->"
+    let lstart=line('.')
+    exe "/-toc -->"
+    let lnum=line('.')
+    execute lstart.",".lnum."g/           /d"
+endfunction
 
-
+let g:vim_markdown_math = 1
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_auto_insert_bullets = 1
+"let g:vim_markdown_folding_disabled = 1
 
 " ==
 " == GitGutter
@@ -718,10 +738,10 @@ let g:Lf_UseCache = 0
 " === IndentLine
 " ===
 
-"nmap <leader>il :IndentLinesToggle<CR>
+nmap <leader>il :IndentLinesToggle<CR>
 let g:indentLine_char = "┊"
 let g:indentLine_first_char = "┊"
-let g:indentLine_enabled = 1
+let g:indentLine_enabled = 0
 " let g:indentLine_color_gui = '#A4E57E'
 " let g:indentLine_color_term = 239
 
@@ -778,7 +798,7 @@ command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
 			\   'down': 20,
 			\   'sink': function('<sid>read_template_into_buffer')
 			\ })
-noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+"noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
