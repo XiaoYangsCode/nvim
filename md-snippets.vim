@@ -16,3 +16,8 @@ autocmd Filetype markdown inoremap <buffer> ,2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap <buffer> ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap <buffer> ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap <buffer> ,l --------<Enter>
+" for math
+autocmd Filetype markdown inoremap <buffer> \m $$ <++><Esc>F$i
+autocmd Filetype markdown inoremap <buffer> \M $$<Enter><Enter>$$<Enter><Enter><++><Esc>3kA
+autocmd Filetype markdown inoremap <buffer> \s \sum_{}^{<++>}<++><Esc>11hi
+autocmd Filetype markdown inoremap <buffer> \f \frac{}{<++>}<++><Esc>10hi

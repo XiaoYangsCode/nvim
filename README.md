@@ -59,6 +59,7 @@
 
 # File navigation
 ## Keymap
+
 | hotkey      | action                                         |
 |-------------|------------------------------------------------|
 | `<C-p>`     | open **ranger**                                |
@@ -72,7 +73,7 @@
 | `<leader>;` | find commond history by **fzf**                |
 | `<leader>f` | find file by **leaderF**                       |
 | `<C-t>`     | find symbols in file by **vista**              |
-| `<leader>t` | open right column to show symbols by **vista** |
+| `<leader>v` | open right column to show symbols by **vista** |
 
 ## Plugins
 
@@ -85,12 +86,18 @@
 # Markdown
 ## Snippets
 
-| hotkey  | action     |
-|---------|------------|
-| `,`+`a` | web link   |
-| `,`+`b` | bold       |
-| `,`+`c` | code block |
-| `,`+`d` | `` <++>    |
-## Plugins
+| hotkey  | action               |
+|---------|----------------------|
+| `,`+`a` | web link             |
+| `,`+`b` | bold                 |
+| `,`+`c` | code block           |
+| `,`+`d` | ` ` <++>             |
+| `,`+`l` | line                 |
+| `\`+`m` | inline math formula  |
+| `\`+`M` | math formula block   |
+| `\`+`s` | `\sum_{}^{<++>}<++>` |
+| `\`+`f` | `\frac{}{<++>}<++>`  |
 
+
+## Plugins
 

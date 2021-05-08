@@ -361,7 +361,7 @@ Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align (before markdown)
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-Plug 'dkarter/bullets.vim'
+"Plug 'dkarter/bullets.vim'
 Plug 'plasticboy/vim-markdown'
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
@@ -561,36 +561,19 @@ hi CocHighlightText guibg=#666699 ctermbg=150
 "hi CocHighlightText ctermfg=231 guifg=#ffffff ctermbg=60 guibg=#4b5269
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
-
 " Formatting selected code. auto to when save
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
 " coc-explorer
 nnoremap <LEADER>T :CocCommand explorer<CR>
 " coc-snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-h> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 let g:snips_author = 'Tianming'
-" set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-"let g:lightline = {
-  "\ 'active': {
-  "\   'left': [
-  "\     [ 'mode', 'paste' ],
-  "\     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
-  "\   ],
-  "\   'right':[
-  "\     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-  "\     [ 'blame' ]
-  "\   ],
-  "\ },
-  "\ 'component_function': {
-  "\   'blame': 'LightlineGitBlame',
-  "\ }
-"\ }
-
-"function! LightlineGitBlame() abort
-  "let blame = get(b:, 'coc_git_blame', '')
-  "" return blame
-  "return winwidth(0) > 120 ? blame : ''
-"endfunction
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 " language server
 let g:LanguageClient_serverCommands = {
     \ 'sh': ['bash-language-server', 'start']
@@ -640,7 +623,6 @@ endfunction
 
 let g:vim_markdown_math = 1
 let g:tex_conceal = ""
-let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 1
