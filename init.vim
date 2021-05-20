@@ -431,8 +431,11 @@ if (has("autocmd"))
 	let s:dark_yellow = { "gui": "#d19a66 ", "cterm": "145", "cterm16" : "7" }
 	let s:black = { "gui": "#282c34", "cterm": "145", "cterm16" : "7" }
 	autocmd ColorScheme * call onedark#extend_highlight("Visual", {"fg": s:black, "bg": s:dark_yellow} )
-	let s:pop_grey = { "gui": "#000024", "cterm": "145", "cterm16" : "7" }
-	autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": s:pop_grey} )
+
+ " pop menu color
+ " let s:pop_grey = { "gui": "#000024", "cterm": "145", "cterm16" : "7" }
+ "autocmd ColorScheme * call onedark#extend_highlight("Pmenu", {"bg": s:pop_grey} )
+
   augroup END
 endif
 " onedark.vim override: Don't set a background color when running in a terminal;
@@ -505,6 +508,7 @@ let g:airline_symbols.branch = '⎇'
 	"\ 'coc-highlight',
 	"\ 'coc-json',
 	"\ 'coc-jedi',
+	"\ 'coc-ccls',
 	"\ 'coc-lists',
 	"\ 'coc-marketplace',
 	"\ 'coc-snippets',
@@ -557,7 +561,8 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 "And set it's color
 autocmd CursorHold * silent call CocActionAsync('highlight')
-hi CocHighlightText guibg=#666699 ctermbg=150
+hi CocHighlightText guibg=#424242 ctermbg=150
+"hi CocHighlightText guibg=#666699 ctermbg=150
 "hi CocHighlightText ctermfg=231 guifg=#ffffff ctermbg=60 guibg=#4b5269
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
