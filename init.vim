@@ -356,7 +356,9 @@ Plug 'preservim/nerdcommenter'
 " Python
 Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+Plug 'vim-python/python-syntax'
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+
 " Markdown
 Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align (before markdown)
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -458,21 +460,24 @@ endif
 " \}
 colorscheme onedark
 " semshi colors
-hi semshiLocal           ctermfg=209 guifg=#ff875f
-hi semshiGlobal          ctermfg=214 guifg=#ffaf00
-hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
-hi semshiParameter       ctermfg=75  guifg=#5fafff
-hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
-hi semshiFree            ctermfg=218 guifg=#ffafd7
-hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
-hi semshiAttribute       ctermfg=49  guifg=#00ffaf
-hi semshiSelf            ctermfg=249 guifg=#b2b2b2
-hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
-hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#666699
+"hi semshiLocal           ctermfg=209 guifg=#ff875f
+"hi semshiGlobal          ctermfg=214 guifg=#ffaf00
+"hi semshiImported        ctermfg=214 guifg=#ffaf00 cterm=bold gui=bold
+"hi semshiParameter       ctermfg=75  guifg=#5fafff
+"hi semshiParameterUnused ctermfg=117 guifg=#87d7ff cterm=underline gui=underline
+"hi semshiFree            ctermfg=218 guifg=#ffafd7
+"hi semshiBuiltin         ctermfg=207 guifg=#ff5fff
+"hi semshiAttribute       ctermfg=49  guifg=#00ffaf
+"hi semshiSelf            ctermfg=249 guifg=#b2b2b2
+"hi semshiUnresolved      ctermfg=226 guifg=#ffff00 cterm=underline gui=underline
+"hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#666699
 
-hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
-sign define semshiError text=E> texthl=semshiErrorSign
+"hi semshiErrorSign       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+"hi semshiErrorChar       ctermfg=231 guifg=#ffffff ctermbg=160 guibg=#d70000
+"sign define semshiError text=E> texthl=semshiErrorSign
+" python highlight
+let g:python_highlight_all = 1
+let g:python_highlight_file_headers_as_comments = 1
 
 " ===
 " === vim-scrollstatus for airline
