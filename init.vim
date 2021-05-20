@@ -346,6 +346,7 @@ Plug 'ojroques/vim-scrollstatus'
 Plug 'ryanoasis/vim-devicons'
 " theme for neovim
 Plug 'joshdick/onedark.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
