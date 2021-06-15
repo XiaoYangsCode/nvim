@@ -354,7 +354,7 @@ Plug 'honza/vim-snippets'
 " commender tool
 Plug 'preservim/nerdcommenter'
 " Python
-Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
+"Plug 'Vimjas/vim-python-pep8-indent', { 'for' :['python', 'vim-plug'] }
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'vim-python/python-syntax'
 "Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
@@ -391,10 +391,10 @@ Plug 'Yggdroot/indentLine'
 "Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 
 " Other filetypes
-Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
+"Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 "Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -509,19 +509,22 @@ let g:airline_symbols.branch = '⎇'
 " ===
 	"\ 'coc-gitignore',
 	"\ 'coc-git',
-"let g:coc_global_extensions = [
-	"\ 'coc-explorer',
-	"\ 'coc-highlight',
-	"\ 'coc-json',
 	"\ 'coc-jedi',
-	"\ 'coc-ccls',
-	"\ 'coc-lists',
-	"\ 'coc-marketplace',
-	"\ 'coc-snippets',
-	"\ 'coc-diagnostic',
-	"\ 'coc-pairs',
-	"\ 'coc-yank',
-	"\ 'coc-vimlsp',]
+	"\ 'coc-python',
+let g:coc_global_extensions = [
+	\ 'coc-explorer',
+	\ 'coc-highlight',
+	\ 'coc-json',
+	\ 'coc-ccls',
+	\ 'coc-pyright',
+	\ 'coc-python',
+	\ 'coc-lists',
+	\ 'coc-marketplace',
+	\ 'coc-snippets',
+	\ 'coc-diagnostic',
+	\ 'coc-pairs',
+	\ 'coc-yank',
+	\ 'coc-vimlsp',]
 
 
 " Use tab to completion code
