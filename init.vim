@@ -370,8 +370,8 @@ Plug 'plasticboy/vim-markdown'
 
 " Git
 Plug 'airblade/vim-gitgutter'
-Plug 'cohama/agit.vim'
-Plug 'tpope/vim-fugitive'
+"Plug 'cohama/agit.vim'
+Plug 'tpope/vim-fugitive' " only for brach info
 "Plug 'kdheepak/lazygit.nvim'
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 
