@@ -99,5 +99,10 @@
 | `\`+`f` | `\frac{}{<++>}<++>`  |
 
 
-## Plugins
+# Python
 
+## HotKey
+
+| hotkey    | action     |
+|-----------|------------|
+| `ctl`+`_` | python doc |
